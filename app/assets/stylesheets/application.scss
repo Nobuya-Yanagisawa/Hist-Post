@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+.logo {
+  font-family: 'Lobster', cursive;
+  color: #ffffff;
+  font-size: 32px;
+}
+
+header a{
+	font-size: 20px;
+}
