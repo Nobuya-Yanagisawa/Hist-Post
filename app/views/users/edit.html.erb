@@ -1,0 +1,14 @@
+edit page
+<%= form_for(@user) do |f| %>
+	<ul>
+		<li>
+			<%= f.label :user_name %>
+			<%= f.text_field :user_name %>
+		</li>
+		<li>
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+		</li>
+	</ul>
+	<%= f.submit %>
+<% end %>
