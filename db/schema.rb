@@ -13,6 +13,11 @@
 ActiveRecord::Schema.define(version: 2018_12_04_094806) do
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
+    t.string "post_name"
+    t.text "post_image_id"
+    t.text "explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
