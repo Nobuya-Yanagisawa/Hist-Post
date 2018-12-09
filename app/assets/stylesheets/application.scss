@@ -19,10 +19,40 @@
 
 .logo {
   font-family: 'Lobster', cursive;
-  color: #ffffff;
+  color: #337ab7;
   font-size: 32px;
+}
+
+header {
+	margin-bottom: 0px!important;
+  opacity: 0.5;
 }
 
 header a{
 	font-size: 20px;
+}
+
+.home_heading{
+  padding: 50px 0px 0px 240px;
+  margin-top: 0!important;
+}
+
+.home_paragraph{
+  margin: 10px 0 10px 220px;
+  font-size: 20px;
+}
+
+.main_visual {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-image: url(world_ver5.jpg);
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.top-picture {
+	position: absolute;
+	width: 100%;
 }

@@ -1,0 +1,11 @@
+Show page
+<ul>
+	<li>
+		<%= current_user.user_name %>
+	</li>
+	<li>
+		<%= current_user.email %>
+	</li>
+</ul>
+
+<%= link_to "User Edit", edit_user_path(@user), class: "btn btn-success" %>

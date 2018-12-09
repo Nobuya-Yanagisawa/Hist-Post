@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <header class="navbar navbar-inverse">
+    <header class="navbar">
       <div class="container">
         <div class="row">
           <nav class="nav navbar-nav navbar-left">
@@ -25,6 +25,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li><%= link_to ' ホーム', root_path, class: "glyphicon glyphicon-home home" %></li>
+              <li><%= link_to ' マイページ', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
               <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             <% else %>
               <li><%= link_to ' ホーム', root_path, class: "glyphicon glyphicon-home home" %></li>
