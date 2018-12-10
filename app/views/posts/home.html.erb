@@ -1,12 +1,26 @@
+<!-- トップ画像 -->
 <div class="main_visual">
 	<h2 class="home_heading">ようこそHistoireへ！</h2>
 	<p class="home_paragraph">授業では教えてもらえない<br>たくさんのエピソードが歴史には<br>あります。<br>みなさんで教えあいながら<br>楽しく学んでみませんか？</p>
 </div>
 
+<!-- コンテンツ左側 主に投稿表示機能-->
 <div class="col-md-8">
-	<p>hogehoge</p>
+	<% @posts.each do |post| %>
+		<div class="home_post_container">
+			<ul>
+				<li>
+					<p>タイトル:<%= post.post_name %></p>
+				</li>
+				<li>
+					<p>解説:<%= post.explanation %></p>
+				</li>
+			</ul>
+		</div>
+	<% end %>
 </div>
 
+<!-- コンテンツ右側　主に検索機能 -->
 <div class="col-md-4">
-	<p>fugafuga</p>
+	<%= link_to '新しく投稿する', new_post_path(current_user), class: "btn btn-primary" %>
 </div>
