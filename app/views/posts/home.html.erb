@@ -1,26 +1,45 @@
-<!-- トップ画像 -->
-<div class="main_visual">
-	<h2 class="home_heading">ようこそHistoireへ！</h2>
-	<p class="home_paragraph">授業では教えてもらえない<br>たくさんのエピソードが歴史には<br>あります。<br>みなさんで教えあいながら<br>楽しく学んでみませんか？</p>
-</div>
-
-<!-- コンテンツ左側 主に投稿表示機能-->
-<div class="col-md-8">
-	<% @posts.each do |post| %>
-		<div class="home_post_container">
-			<ul>
-				<li>
-					<p>タイトル:<%= post.post_name %></p>
-				</li>
-				<li>
-					<p>解説:<%= post.explanation %></p>
-				</li>
-			</ul>
+<div class="container-fluid">
+	<div class="row">
+		<!-- トップ画像 -->
+		<div class="home_top_container">
+			<div class="home_top_visual">
+				<h2 class="home_top_heading">ようこそHistoireへ！</h2>
+				<p class="home_top_paragraph">授業では教えてもらえない<br>たくさんのエピソードが歴史には<br>あります。<br>みなさんで教えあいながら<br>楽しく学んでみませんか？</p>
+			</div>
 		</div>
-	<% end %>
-</div>
 
-<!-- コンテンツ右側　主に検索機能 -->
-<div class="col-md-4">
-	<%= link_to '新しく投稿する', new_post_path(current_user), class: "btn btn-primary" %>
+		<!-- コンテンツ左側 主に投稿表示機能-->
+		<div class="col-md-8">
+			<% @posts.each do |post| %>
+				<div class="home_left_container">
+					<ul>
+						<li>
+							<p>タイトル:<%= post.post_name %></p>
+						</li>
+						<li>
+							<%= attachment_image_tag post, :post_image, :fill, 100, 100 %>
+						</li>
+						<li>
+							<p>解説:<%= post.explanation %></p>
+						</li>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+
+		<!-- コンテンツ右側　主に検索機能 -->
+		<div class="col-md-4">
+			<div class="home_right_container">
+				<div class="home_right_btn">
+					<% if user_signed_in? %>
+						<%= link_to '新しく投稿する', new_post_path(current_user), class: "btn_new_post" %>
+					<% else %>
+						<%= link_to 'ログインすると投稿ができます！', new_user_session_path, class: "btn_new_post" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 </div>

@@ -17,6 +17,7 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
+/*共通部分*/
 .logo {
   font-family: 'Lobster', cursive;
   color: #337ab7;
@@ -32,17 +33,24 @@ header a{
 	font-size: 20px;
 }
 
-.home_heading{
-  padding: 50px 0px 0px 240px;
+/*ホーム*/
+  /*トップ画像*/
+.home_top_container{
+  width: 1519px;
+  margin: 0 auto;
+}
+
+.home_top_heading{
+  padding: 50px 0px 0px 180px;
   margin-top: 0!important;
 }
 
-.home_paragraph{
-  margin: 10px 0 10px 220px;
+.home_top_paragraph{
+  padding: 10px 0 10px 165px;
   font-size: 20px;
 }
 
-.main_visual {
+.home_top_visual {
   position: relative;
   width: 100%;
   height: 300px;
@@ -51,8 +59,54 @@ header a{
   background-position: center;
   margin: 0 auto;
 }
+  /*コンテンツ左側*/
+.home_left_container {
 
-.top-picture {
-	position: absolute;
-	width: 100%;
+}
+  /*コンテンツ右側*/
+.home_right_container{
+  background: blue;
+}
+    /*投稿ページ遷移ボタン*/
+.home_right_btn {
+  padding-top: 10px;
+}
+
+.btn_new_post {
+  display: block;
+  cursor: pointer;
+  max-width: 300px;
+  margin: 1em auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: inherit;
+  background: #337ab7;
+  box-shadow: 0 6px 0 #2d6da3, 0 12px 0 rgba(0,0,0,.2);
+  transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
+}
+
+.btn_new_post:hover {
+  color: #ffffff;
+  text-decoration: inherit;
+  background: #198fdb;
+  box-shadow: 0 3px 0 #2d6da3, 0 6px 0 rgba(0,0,0,.2);
+  transform: translateY(3px);
+  animation: flash 1s;
+}
+
+.btn_new_post:active {
+  color: #ffffff;
+  background: #177bbc;
+  box-shadow: 0 0 0 #2d6da3, 0 0 0 rgba(0,0,0,.2);
+  transform: translateY(6px);
+  transition-duration: .1s;
+}
+
+@keyframes flash {
+  0% { background: #198fdb; }
+  10% { background: #77d1ef; }
+  100% { background: #198fdb; }
 }
