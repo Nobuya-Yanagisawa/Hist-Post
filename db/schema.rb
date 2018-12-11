@@ -13,6 +13,11 @@
 ActiveRecord::Schema.define(version: 2018_12_04_094806) do
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
+    t.string "post_name"
+    t.string "post_image_id"
+    t.text "explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_094806) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "user_name"
+    t.string "user_image_id"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
