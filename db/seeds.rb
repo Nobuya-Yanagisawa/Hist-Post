@@ -19,3 +19,20 @@ User.create!(
 	password: "111111",
 	admin: false,
 	)
+
+10.times do |n|
+	User.create!(
+		user_name: "ユーザー#{n+1}",
+		email: "user#{n+1}@user.com",
+		password: "111111",
+		admin: false,
+	)
+end
+
+50.times do |n|
+	Post.create!(
+		user_id: rand(1..12),
+		post_name: "post_name#{n+1}",
+		explanation: "explanation#{n+1}",
+	)
+end

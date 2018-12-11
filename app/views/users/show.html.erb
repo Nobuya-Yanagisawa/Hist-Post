@@ -4,6 +4,9 @@ Show page
 		<%= current_user.user_name %>
 	</li>
 	<li>
+		<%= attachment_image_tag current_user, :user_image, :fill, 100, 100, fallback: "no_image_big.jpg", alt:"User image" %>
+	</li>
+	<li>
 		<%= current_user.email %>
 	</li>
 </ul>

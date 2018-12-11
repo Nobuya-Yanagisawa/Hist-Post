@@ -33,6 +33,10 @@ header a{
 	font-size: 20px;
 }
 
+.pagination {
+  display: block!important;
+  text-align: center;
+}
 /*ホーム*/
   /*トップ画像*/
 .home_top_container{
@@ -65,7 +69,7 @@ header a{
 }
   /*コンテンツ右側*/
 .home_right_container{
-  background: blue;
+
 }
     /*投稿ページ遷移ボタン*/
 .home_right_btn {
