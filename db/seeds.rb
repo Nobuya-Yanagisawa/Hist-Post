@@ -29,10 +29,10 @@ User.create!(
 	)
 end
 
-50.times do |n|
+10.times do |n|
 	Post.create!(
 		user_id: rand(1..12),
-		post_name: "post_name#{n+1}",
-		explanation: "explanation#{n+1}",
+		post_title: "post_title#{n+1}",
+		top_explanation: "explanation#{n+1}",
 	)
 end

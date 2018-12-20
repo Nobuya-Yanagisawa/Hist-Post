@@ -1,2 +1,29 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<div>
+				<div>
+					<%= @post.post_title %>
+					<%= @post.top_explanation %>
+				</div>
+				<div>
+					<% @post.tags.each do |tag| %>
+						<%= tag.tag_name %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<%= link_to '編集する', edit_post_path(@post), class: "btn btn-success" %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="post_image_wrapper<%= @post.id %>", style="width:800px; height:400px; background:orange;">
+				<%= attachment_image_tag @post, :post_image, class: "post_image", alt:"Post_image" %>
+			</div>
+		</div>
+	</div>
+
+</div>

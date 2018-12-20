@@ -3,9 +3,11 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
     	t.integer :user_id
     	t.integer :tag_id
-    	t.string :post_name
+    	t.string :post_title
     	t.string :post_image_id
-    	t.text :explanation
+      t.integer :post_image_width
+      t.integer :post_image_height
+    	t.text :top_explanation
 
       t.timestamps
     end
