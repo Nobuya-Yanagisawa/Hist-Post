@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-10">
 			<div>
@@ -11,6 +11,17 @@
 						<%= tag.tag_name %>
 					<% end %>
 				</div>
+				<!-- いいね機能 -->
+				<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
+					<%= link_to post_likes_path(@post.id), method: :delete do%>
+						<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
+        	<% end %>
+        <% else %>
+	        <%= link_to post_likes_path(@post.id), method: :post do %>
+						<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
+	        <% end %>
+				<% end %>
+				<!-- いいね機能 -->
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -19,11 +30,50 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-md-12">
-			<div class="post_image_wrapper<%= @post.id %>", style="width:800px; height:400px; background:orange;">
-				<%= attachment_image_tag @post, :post_image, class: "post_image", alt:"Post_image" %>
+		<div class="col-md-8 col-md-offset-1">
+			<div class="post_image_wrapper post_image_wrapper<%= @post.id %>", style="width:<%= @post.post_image_width %>px; height: <%= @post.post_image_height %>px;" >
+				<%= attachment_image_tag @post, :post_image, class: "show_post_image", alt:"投稿画像" %>
 			</div>
 		</div>
+		<div class="col-md-2">
+			
+		</div>
 	</div>
-
 </div>
+
+<!-- コメント -->
+<div class="container comment">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>コメント</h3>
+			<%= form_for([@post, @comment]) do |form| %>
+				<div style="display:block;">
+	      	<%= form.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
+				</div>
+				<div>
+	      	<%= form.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
+				</div>
+	    <% end %>
+		</div>
+
+			<h4>コメント一覧</h4>
+			<% if @comments.any? %>
+	  		<% @comments.each do |comment| %>
+	  			<div class="comment_wrapper">
+		  			<%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "no_image_big.jpg", alt:"User image" %>
+		  			<div class="comment_user_box">
+			  			<%= comment.user.user_name %>
+		  			</div>
+		  			<div class="comment_text_box">
+			  			<%= comment.comment_text %>
+		  			</div>
+		  			<%= link_to '[x]', post_comments_path(post_id: comment.post_id, comment_id: comment.id), method: :delete %>
+	  			</div>
+	  		<% end %>
+			<% else %>
+	  		<h4>コメントはまだありません</h4>
+	  	<% end %>
+	  </div>
+	</div>
+</div>
+<!-- コメント終了 -->

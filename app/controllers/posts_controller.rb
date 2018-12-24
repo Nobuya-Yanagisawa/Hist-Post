@@ -25,14 +25,23 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_likes_count = Like.where(post_id: @post.id).count
     @comment = Comment.new
-    @comment = @post.comments.page(params[:page])
+    @comments = @post.comments.page(params[:page]).reverse_order
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      @post = Post.find(params[:id])
+      render :edit
+    end
   end
 
   def destroy

@@ -81,3 +81,21 @@
 }
 
 /*Show*/
+.post_image_wrapper {
+  border: groove 10px;
+  margin: 0 auto;
+}
+
+.show_post_image {
+  width: 100%;
+  height: 100%;
+}
+
+.comment_wrapper {
+  border: solid 1px #eeeeee;
+}
+
+.comment_user_box{
+  display: inline-block;
+  font-size: 20px;
+}
