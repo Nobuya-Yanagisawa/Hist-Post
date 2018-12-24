@@ -34,7 +34,10 @@
 }
   /*コンテンツ右側*/
 .home_right_container{
-
+  margin-top: 15px;
+  border-radius: 10px;
+  border: double 3px black;
+  background: #cedaf34a;
 }
     /*投稿ページ遷移ボタン*/
 .home_right_btn {
@@ -52,7 +55,7 @@
   color: #ffffff;
   text-align: center;
   text-decoration: inherit;
-  background: #337ab7;
+  background: #1084e7;
   box-shadow: 0 6px 0 #2d6da3, 0 12px 0 rgba(0,0,0,.2);
   transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
 }

@@ -9,7 +9,7 @@
 		</div>
 
 		<!-- コンテンツ左側 主に投稿表示機能-->
-		<div class="col-md-8">
+		<div class="col-md-7 col-md-offset-1" >
 			<div class="home_left_container">
 				<table class="table table-hover">
 					<thead>
@@ -19,6 +19,7 @@
 							<th>タイトル</th>
 							<th>投稿画像</th>
 							<th>概要</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,7 +30,14 @@
 								<td><%= link_to post.post_title, post_path(post) %></td>
 								<td><%= attachment_image_tag post, :post_image, :fill, 150, 150 %></td>
 								<td><%= post.top_explanation %></td>
-							
+								<td>
+									<% if user_signed_in? && (current_user.id == post.user.id || current_user.admin) %>
+										<div class="col-md-1">
+											<%= link_to '削除', post_path(post), method: :delete, "data-confirm" => "本当に投稿を消しますか?", class: "btn btn-danger" %>
+										</div>
+									<% end %>
+								</td>
+							</tr>
 						<% end %>
 					</tbody>
 				</table>

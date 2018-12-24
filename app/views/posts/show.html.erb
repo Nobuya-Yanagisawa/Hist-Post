@@ -1,9 +1,11 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-8 col-md-offset-1">
 			<div>
 				<div>
 					<%= @post.post_title %>
+				</div>
+				<div>
 					<%= @post.top_explanation %>
 				</div>
 				<div>
@@ -11,32 +13,36 @@
 						<%= tag.tag_name %>
 					<% end %>
 				</div>
-				<!-- いいね機能 -->
-				<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
-					<%= link_to post_likes_path(@post.id), method: :delete do%>
-						<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
-        	<% end %>
-        <% else %>
-	        <%= link_to post_likes_path(@post.id), method: :post do %>
-						<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
-	        <% end %>
+				<!-- 投稿いいね機能 -->
+				<% if user_signed_in? %>
+					<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
+						<%= link_to post_likes_path(@post.id), method: :delete do%>
+							<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> いいね！ <%= @post_likes_count %></i>
+	        	<% end %>
+	        <% else %>
+		        <%= link_to post_likes_path(@post.id), method: :post do %>
+							<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
+		        <% end %>
+					<% end %>
 				<% end %>
-				<!-- いいね機能 -->
+				<!-- 投稿いいね機能 -->
 			</div>
 		</div>
-		<div class="col-md-2">
-			<%= link_to '編集する', edit_post_path(@post), class: "btn btn-success" %>
-		</div>
+		<% if user_signed_in? && (current_user.id == @post.user.id || current_user.admin) %>
+			<div class="col-md-1">
+				<%= link_to '編集する', edit_post_path(@post), class: "btn btn-success" %>
+				<%= link_to '投稿を削除する', post_path(@post), method: :delete, "data-confirm" => "本当に投稿を消しますか?", class: "btn btn-danger" %>
+			</div>
+		<% end %>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-8 col-md-offset-1">
-			<div class="post_image_wrapper post_image_wrapper<%= @post.id %>", style="width:<%= @post.post_image_width %>px; height: <%= @post.post_image_height %>px;" >
+			<div class="post_image_wrapper post_image_wrapper<%= @post.id %>", style="width:<%= @post.post_image_width %>px; height:<%= @post.post_image_height %>px;" >
 				<%= attachment_image_tag @post, :post_image, class: "show_post_image", alt:"投稿画像" %>
 			</div>
 		</div>
 		<div class="col-md-2">
-			
 		</div>
 	</div>
 </div>
@@ -46,16 +52,20 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3>コメント</h3>
-			<%= form_for([@post, @comment]) do |form| %>
-				<div style="display:block;">
-	      	<%= form.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
-				</div>
-				<div>
-	      	<%= form.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
-				</div>
-	    <% end %>
+			<% if user_signed_in? %>
+				<%= form_for([@post, @comment]) do |form| %>
+					<div style="display:block;">
+		      	<%= form.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
+					</div>
+					<div>
+		      	<%= form.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
+					</div>
+		    <% end %>
+		  <% else %>
+		  	<%= link_to "コメントを投稿するにはログインが必要です", new_user_session_path, class: "btn btn-default" %>
+		  <% end %>
 		</div>
-
+		<div class="col-md-12">
 			<h4>コメント一覧</h4>
 			<% if @comments.any? %>
 	  		<% @comments.each do |comment| %>
@@ -67,11 +77,30 @@
 		  			<div class="comment_text_box">
 			  			<%= comment.comment_text %>
 		  			</div>
-		  			<%= link_to '[x]', post_comments_path(post_id: comment.post_id, comment_id: comment.id), method: :delete %>
+		  			<% if user_signed_in? && current_user.id == comment.user.id %>
+			  			<%= link_to 'コメントを消す', post_comment_path(@post.id, comment_id: comment.id), method: :delete, "data-confirm" => "本当にコメントを消しますか?" %>
+			  		<% end %>
+
+						<!-- コメントいいね機能 -->
+						<% if user_signed_in? %>
+							<div>
+								<% if CommentLike.find_by(user_id: current_user.id, post_id: @post.id, comment_id: comment.id) %>
+									<%= link_to post_comment_comment_likes_path(@post, comment.id), method: :delete do %>
+										<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> <%= comment.comment_likes.count%></i>
+				        	<% end %>
+				        <% else %>
+					        <%= link_to post_comment_comment_likes_path(@post, comment.id), method: :post do %>
+										<i class="far fa-thumbs-up btn btn-default"> <%= comment.comment_likes.count %></i>
+					        <% end %>
+								<% end %>
+							</div>
+						<% end %>
+						<!-- コメントいいね機能 -->
+
 	  			</div>
 	  		<% end %>
 			<% else %>
-	  		<h4>コメントはまだありません</h4>
+	  		<p>コメントはまだありません</p>
 	  	<% end %>
 	  </div>
 	</div>

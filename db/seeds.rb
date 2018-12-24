@@ -33,6 +33,6 @@ end
 	Post.create!(
 		user_id: rand(1..12),
 		post_title: "post_title#{n+1}",
-		top_explanation: "explanation#{n+1}",
+		top_explanation: "top_explanation#{n+1}",
 	)
 end
