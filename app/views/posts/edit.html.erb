@@ -1,2 +1,43 @@
 <h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<%= form_for(@post) do |f| %>
+	<ul>
+		<li>
+			<%= f.label :post_title %>
+			<%= f.text_field :post_title %>
+		</li>
+		<li>
+			<%= f.label :post_image_id %>
+			<%= f.attachment_field :post_image %>
+		</li>
+		<li>
+			<%= f.label :post_image_width, "横幅" %>
+			<%= f.number_field :post_image_width %>
+		</li>
+		<li>
+			<%= f.label :post_image_height, "横幅" %>
+			<%= f.number_field :post_image_height %>
+		</li>
+		<li>
+			<%= f.label :top_explanation %>
+			<%= f.text_area :top_explanation %>
+		</li>
+
+		<!-- タグ追加 -->
+		<li>
+			<div class="field">
+		    <%= f.fields_for :tags do |f| %>
+		      <%= render 'tag_fields', f: f %>
+		    <% end %>
+		  </div>
+
+		  <div style="margin-top: 10px;" class="field">
+		  	<%= link_to_add_association 'Tag +', f, :tags,
+		  		data: { association_insertion_method: 'before' },
+		  		class: "btn-lg btn-primary" %>
+		  </div>
+		</li>
+		<!-- タグ追加終わり -->
+
+	</ul>
+	<%= f.submit %>
+<% end %>
