@@ -8,9 +8,9 @@
 			</div>
 		</div>
 
-		<!-- コンテンツ左側 主に投稿表示機能-->
+		<!-- 投稿表示 -->
 		<div class="col-md-7 col-md-offset-1" >
-			<div class="home_left_container">
+			<div class="main_container">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -45,20 +45,10 @@
 				<%= page_entries_info(@posts) %>
 			</div>
 		</div>
-
-		<!-- コンテンツ右側　主に検索機能 -->
-		<div class="col-md-4">
-			<div class="home_right_container">
-				<div class="home_right_btn">
-					<% if user_signed_in? %>
-						<%= link_to '新しく投稿する', new_post_path(current_user), class: "btn_new_post" %>
-					<% else %>
-						<%= link_to 'ログインすると投稿ができます！', new_user_session_path, class: "btn_new_post" %>
-					<% end %>
-				</div>
-			</div>
+		
+		<!-- サイドバー -->
+		<div class="col-md-3">
+			<%= render 'posts/sidebar' %>
 		</div>
-
-
 	</div>
 </div>

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def home
     @posts = Post.page(params[:page]).reverse_order
+    @categories = Category.all
+    @category = Category.new
   end
 
   def new

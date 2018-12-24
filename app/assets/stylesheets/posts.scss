@@ -32,56 +32,6 @@
 .home_left_container {
 
 }
-  /*コンテンツ右側*/
-.home_right_container{
-  margin-top: 15px;
-  border-radius: 10px;
-  border: double 3px black;
-  background: #cedaf34a;
-}
-    /*投稿ページ遷移ボタン*/
-.home_right_btn {
-  padding-top: 10px;
-}
-
-.btn_new_post {
-  display: block;
-  cursor: pointer;
-  max-width: 300px;
-  margin: 1em auto;
-  padding: 20px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  color: #ffffff;
-  text-align: center;
-  text-decoration: inherit;
-  background: #1084e7;
-  box-shadow: 0 6px 0 #2d6da3, 0 12px 0 rgba(0,0,0,.2);
-  transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
-}
-
-.btn_new_post:hover {
-  color: #ffffff;
-  text-decoration: inherit;
-  background: #198fdb;
-  box-shadow: 0 3px 0 #2d6da3, 0 6px 0 rgba(0,0,0,.2);
-  transform: translateY(3px);
-  animation: flash 1s;
-}
-
-.btn_new_post:active {
-  color: #ffffff;
-  background: #177bbc;
-  box-shadow: 0 0 0 #2d6da3, 0 0 0 rgba(0,0,0,.2);
-  transform: translateY(6px);
-  transition-duration: .1s;
-}
-
-@keyframes flash {
-  0% { background: #198fdb; }
-  10% { background: #77d1ef; }
-  100% { background: #198fdb; }
-}
 
 /*Show*/
 .post_image_wrapper {
