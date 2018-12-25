@@ -15,7 +15,9 @@ Rails.application.routes.draw do
  	end
 
  	resources :categories
- 	resources :words, only: [:new, :create, :show, :destroy]
+ 	resources :words, only: [:new, :create, :show, :destroy] do
+ 		resources :writings, only: [:create, :destroy]
+ 	end
 
   get 'posts/:id/edit_image_details', to: 'posts#edit_image_details', as: "edit_post_image_details"
   # post "likes/:post_id/create", to: "likes#create"

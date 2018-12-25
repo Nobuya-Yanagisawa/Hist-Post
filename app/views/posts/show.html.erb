@@ -53,12 +53,12 @@
 		<div class="col-md-12">
 			<h3>コメント</h3>
 			<% if user_signed_in? %>
-				<%= form_for([@post, @comment]) do |form| %>
+				<%= form_for([@post, @comment]) do |f| %>
 					<div style="display:block;">
-		      	<%= form.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
+		      	<%= f.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
 					</div>
 					<div>
-		      	<%= form.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
+		      	<%= f.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
 					</div>
 		    <% end %>
 		  <% else %>

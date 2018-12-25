@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_24_224746) do
+ActiveRecord::Schema.define(version: 2018_12_25_053535) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_12_24_224746) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "category_id"
     t.integer "tag_id"
     t.string "post_title"
     t.string "post_image_id"
@@ -92,6 +93,14 @@ ActiveRecord::Schema.define(version: 2018_12_24_224746) do
   create_table "words", force: :cascade do |t|
     t.integer "category_id"
     t.string "word_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "writings", force: :cascade do |t|
+    t.integer "word_id"
+    t.string "writing_writer"
+    t.text "writing_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

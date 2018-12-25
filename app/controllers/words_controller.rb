@@ -12,6 +12,9 @@ class WordsController < ApplicationController
 
 	def show
 		@word = Word.find(params[:id])
+		@writing = Writing.new
+		@writings = Writing.all
+		@categories = Category.all
 	end
 
 private

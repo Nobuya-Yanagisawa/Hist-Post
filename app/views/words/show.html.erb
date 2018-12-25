@@ -2,8 +2,50 @@
 	<div class="row">
 		<div class="col-md-8" >
 			<div>
-				<h3><%= link_to "カテゴリー", categories_path %>		➡		<%= link_to @word.category.category_name, category_path(@word.category.id) %>				➡		<%= @word.word_name %></h3>
+				<h3><%= link_to "カテゴリー", categories_path %>		➡		<%= link_to @word.category.category_name, category_path(@word.category.id) %>		➡		<%= @word.word_name %></h3>
 			</div>
+			<div>
+				<h1><%= @word.word_name %></h1>
+			</div>
+			<div class="writing_wrapper">
+				<h4>コメント一覧</h4>
+				<% @writings.each do |writing| %>
+					<div class="writing_box">
+		  			<div class="writing_top_box">
+		  				<%= writing.id %>
+							投稿者：
+							<% if writing.writing_writer.blank? %>
+								名無しさん
+							<% else %>
+								<%= writing.writing_writer %>さん
+							<% end %>
+							<%= writing.created_at %>
+		  			</div>
+		  			<div class="writing_text_box">
+							<%= writing.writing_text %>
+		  			</div>
+			  			<%= link_to 'コメントを消す', word_writing_path(@word.id, writing_id: writing.id), method: :delete, "data-confirm" => "本当にコメントを消しますか?" %>
+					</div>
+				<% end %>
+			</div>
+
+			<div >
+				<%= form_for([@word, @writing]) do |f| %>
+					<div>
+						<%= f.label :writing_writer, "投稿者名" %>
+						<%= f.text_field :writing_writer, value:"名無し" %>
+					</div>
+					<div>
+						<%= f.label  :writing_text, "コメント" %>
+						<%= f.text_area :writing_text, style: "width:80%; height:80px;", placeholder: "コメントを入力してください" %>
+					</div>
+
+					<%= f.submit "コメントを投稿する" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<%= render 'posts/sidebar' %>
 		</div>
 	</div>
 </div>

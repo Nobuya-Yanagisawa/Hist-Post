@@ -39,3 +39,7 @@ end
 
 Category.create!(category_name: "人物")
 Category.create!(category_name: "出来事")
+Word.create!(category_id: 1, word_name: "ナポレオン")
+Word.create!(category_id: 1, word_name: "ワシントン")
+Word.create!(category_id: 2, word_name: "関ヶ原の戦い")
+Word.create!(category_id: 2, word_name: "明治維新")
