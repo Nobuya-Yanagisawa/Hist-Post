@@ -1,0 +1,11 @@
+<div class="container">
+	<%= link_to "戻る", :back, class: "btn btn-default" %>
+	<section style="text-align: center;">
+		<h1>投稿の種類を選んでください。</h1>
+	</section>
+	<div style="margin: 40px 0 40px">
+		<%= link_to "解説", new_post_path(current_user), class: "btn btn_new_post" %>
+
+		<%= link_to "辞典", new_word_path, class: "btn btn_new_word" %>
+	</div>
+</div>

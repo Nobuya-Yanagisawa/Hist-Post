@@ -52,3 +52,33 @@
   display: inline-block;
   font-size: 20px;
 }
+
+.btn_new_post{
+  margin-left: 75px;
+  padding: 300px;
+  font-size: 200px!important;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  border: double 3px gray!important;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: inherit;
+  background: #1084e7ab;
+}
+
+.btn_new_word{
+  margin-left: 100px;
+  padding:300px;
+  font-size: 200px!important;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  border: double 3px gray!important;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: inherit;
+  background: #6aeb46ab;
+}

@@ -45,7 +45,7 @@ header a{
   border: double 3px black;
 }
 
-.btn_new_post {
+.btn_select {
   display: block;
   cursor: pointer;
   max-width: 300px;
@@ -61,7 +61,7 @@ header a{
   transition: color .3s, background .3s, box-shadow .3s, transform 0.3s;
 }
 
-.btn_new_post:hover {
+.btn_select:hover {
   color: #ffffff;
   text-decoration: inherit;
   background: #198fdb;
@@ -70,7 +70,7 @@ header a{
   animation: flash 1s;
 }
 
-.btn_new_post:active {
+.btn_select:active {
   color: #ffffff;
   background: #177bbc;
   box-shadow: 0 0 0 #2d6da3, 0 0 0 rgba(0,0,0,.2);

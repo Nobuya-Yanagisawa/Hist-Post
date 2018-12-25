@@ -36,3 +36,6 @@ end
 		top_explanation: "top_explanation#{n+1}",
 	)
 end
+
+Category.create!(category_name: "人物")
+Category.create!(category_name: "出来事")

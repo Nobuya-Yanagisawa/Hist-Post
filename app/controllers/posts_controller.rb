@@ -5,6 +5,9 @@ class PostsController < ApplicationController
     @category = Category.new
   end
 
+  def select
+  end
+
   def new
     @post = Post.new
     @tag = @post.tags.build

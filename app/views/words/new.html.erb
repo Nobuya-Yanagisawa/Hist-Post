@@ -1,0 +1,14 @@
+<h1>辞典の新規作成画面です</h1>
+<%= form_for(@word) do |f| %>
+	<ul>
+		<li>
+			<%= f.label :category_id, "カテゴリー" %>
+			<%= f.select :category_id, @categories.map { |t| [t.category_name, t.id] } %>
+		</li>
+		<li>
+			<%= f.label :word_name, "単語" %>
+			<%= f.text_field :word_name %>
+		</li>
+	</ul>
+	<%= f.submit "単語を作成" %>
+<% end %>

@@ -1,5 +1,5 @@
 <h3>新しいカテゴリーを入れてください</h3>
-<% form_for(@category) do |f| %>
+<%= form_for(@category) do |f| %>
 	<%= f.text_field :category_name %>
-	<%= f.submit %>
+	<%= f.submit "送信" %>
 <% end %>
