@@ -8,25 +8,43 @@
 				<h1><%= @word.word_name %></h1>
 			</div>
 			<div class="writing_wrapper">
-				<h4>コメント一覧</h4>
-				<% @writings.each do |writing| %>
-					<div class="writing_box">
-		  			<div class="writing_top_box">
-		  				<%= writing.id %>
-							投稿者：
-							<% if writing.writing_writer.blank? %>
-								名無しさん
-							<% else %>
-								<%= writing.writing_writer %>さん
-							<% end %>
-							<%= writing.created_at %>
-		  			</div>
-		  			<div class="writing_text_box">
-							<%= writing.writing_text %>
-		  			</div>
-			  			<%= link_to 'コメントを消す', word_writing_path(@word.id, writing_id: writing.id), method: :delete, "data-confirm" => "本当にコメントを消しますか?" %>
-					</div>
-				<% end %>
+				<div class="col-mc-12" style="text-align: left;">
+					<h4 style="border-bottom">コメント一覧</h4>
+					<% @writings.each do |writing| %>
+						<div class="writing_box" style="margin:0 10px">
+			  			<div class="writing_top_box">
+			  				<%= writing.id %>.
+								投稿者：
+								<% if writing.writing_writer.blank? %>
+									名無しさん
+								<% else %>
+									<%= writing.writing_writer %>さん
+								<% end %>
+								<%= writing.created_at %>
+			  			</div>
+			  			<div class="writing_text_box">
+								<%= writing.writing_text %>
+			  			</div>
+			  			<div style="width: 200px; margin-left: auto; margin-right:30px; margin-top: 10px;">
+								<!-- コメントいいね機能 -->
+								<% if user_signed_in? %>
+									<% if WritingLike.find_by(user_id: current_user.id, word_id: @word.id, writing_id: writing.id) %>
+										<%= link_to word_writing_writing_likes_path(@word, writing.id), method: :delete do %>
+											<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> <%= writing.writing_likes.count%></i>
+					        	<% end %>
+					        <% else %>
+						        <%= link_to word_writing_writing_likes_path(@word, writing.id), method: :post do %>
+											<i class="far fa-thumbs-up btn btn-default"> <%= writing.writing_likes.count %></i>
+						        <% end %>
+									<% end %>
+								<% end %>
+								<!-- コメントいいね機能 -->
+					  		<%= link_to 'その他', word_writing_path(@word.id, writing_id: writing.id), method: :delete, "data-confirm" => "本当にコメントを消しますか?", class: "btn btn-default", style: "padding:3px 5px;" %>
+			  			</div>
+						</div>
+					<hr style="width:95%;">
+					<% end %>
+				</div>
 			</div>
 
 			<div >
@@ -39,7 +57,6 @@
 						<%= f.label  :writing_text, "コメント" %>
 						<%= f.text_area :writing_text, style: "width:80%; height:80px;", placeholder: "コメントを入力してください" %>
 					</div>
-
 					<%= f.submit "コメントを投稿する" %>
 				<% end %>
 			</div>

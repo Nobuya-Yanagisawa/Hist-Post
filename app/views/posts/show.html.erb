@@ -16,7 +16,7 @@
 				<!-- 投稿いいね機能 -->
 				<% if user_signed_in? %>
 					<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
-						<%= link_to post_likes_path(@post.id), method: :delete do%>
+						<%= link_to post_likes_path(@post.id), remote: true, method: :delete do%>
 							<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> いいね！ <%= @post_likes_count %></i>
 	        	<% end %>
 	        <% else %>

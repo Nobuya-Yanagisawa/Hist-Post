@@ -9,8 +9,8 @@
 	<%= link_to '日本史', root_path, class: "btn btn-default search_btn" %>
 	<%= link_to '地域史', root_path, class: "btn btn-default search_btn" %>
 	<%= link_to '美術ギャラリー', root_path, class: "btn btn-default search_btn" %>
-	
-	<%= link_to '辞典', categories_path, class: "btn", style: "background: #eeeeee; text-align: center; padding:15px 0 15px; width:90%; margin-left: 15px;" %>
+
+	<%= link_to '辞典', categories_path, class: "btn btn_categories" %>
 	<% @categories.each do |category| %>
 		<%= link_to category.category_name, category_path(category.id), class: "btn btn-default search_btn" %>
 	<% end %>
