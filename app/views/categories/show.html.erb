@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8" >
+			<div>
+				<h3><%= link_to "カテゴリー", categories_path %> ➡ <%= @category.category_name %></h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>単語</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @category.words.each do |word| %>
+							<tr>
+								<td>
+									<%= link_to word.word_name, word_path(word) %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<%= render 'posts/sidebar' %>
+		</div>
+	</div>
+</div>

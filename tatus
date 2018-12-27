@@ -1,0 +1,128 @@
+[33mcommit 480e29a8f9da5da8c126c02e0ad12861c7d2a54f[m[33m ([m[1;36mHEAD -> [m[1;32mword[m[33m, [m[1;31morigin/word[m[33m)[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 25 19:34:16 2018 +0000
+
+    Add writing_likes ttable
+
+[33mcommit 0531693e55c4666e7b16f559cdb13c7ed3e5b03b[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 25 09:17:46 2018 +0000
+
+    Add writings table
+
+[33mcommit 8929b00c0f67bb1ccccd5200f49cb6b01581d8cd[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 25 05:34:49 2018 +0000
+
+    Improve word function
+
+[33mcommit 57d07ea2c2c4996ce8a9f62d07ffae1e67d2d9e8[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 24 23:06:42 2018 +0000
+
+    Modify words table
+
+[33mcommit 2b3620a699533b7b055dcff987d6574514304a2c[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 24 22:46:26 2018 +0000
+
+    Add words table
+
+[33mcommit e5c1268d1ccd128f91559e9b89cb4143f2f72f21[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mthread[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: c31c926 22dd36a
+Author: Nobuya-Yanagisawa <43537220+Nobuya-Yanagisawa@users.noreply.github.com>
+Date:   Mon Dec 24 19:02:16 2018 +0900
+
+    Merge pull request #3 from Nobuya-Yanagisawa/post
+    
+    Post
+
+[33mcommit 22dd36a6d9aee6a5083cc1281d573c1d4aa1ba04[m[33m ([m[1;31morigin/post[m[33m, [m[1;32mpost[m[33m)[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 24 09:57:58 2018 +0000
+
+    Improve like function
+
+[33mcommit 2f6d5b1629824c888bef062f64c09d6560300b00[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 24 06:15:58 2018 +0000
+
+    Add iikes table
+
+[33mcommit acba030b72f07ef6cb11f9f5ce5ceebe1afe211b[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Thu Dec 20 07:21:03 2018 +0000
+
+    Add Tag model
+
+[33mcommit c31c92626ca7cb29f0d160dbe5f3e776729ae595[m
+Merge: 6170f4d e79278f
+Author: Nobuya-Yanagisawa <43537220+Nobuya-Yanagisawa@users.noreply.github.com>
+Date:   Tue Dec 11 14:01:31 2018 +0900
+
+    Merge pull request #2 from Nobuya-Yanagisawa/post
+    
+    Confirm merge
+
+[33mcommit e79278f874290a66c11653e74d83b898973b6eae[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 11 04:56:03 2018 +0000
+
+    Improve home view
+
+[33mcommit f147f6390331034a4a11f771df4407cdaccb2236[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 10 12:43:40 2018 +0000
+
+    Add refile function to Users and Posts
+
+[33mcommit 5358dd2664816ef9919483b5dab220cc16f37dec[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Mon Dec 10 02:54:00 2018 +0000
+
+    Modify home view
+
+[33mcommit 69ac3cc7db893fd6fef5a76e113f77cefefddc51[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Sun Dec 9 11:42:12 2018 +0000
+
+    Modify Post model
+
+[33mcommit d3ed2bc2b2b76b2fa458b29c49411c533a945e81[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Sun Dec 9 11:35:58 2018 +0000
+
+    Modify Post model
+
+[33mcommit 6170f4dca6a5aa885ac0195f53544f5567975085[m
+Merge: ba406ba 9336015
+Author: Nobuya-Yanagisawa <43537220+Nobuya-Yanagisawa@users.noreply.github.com>
+Date:   Sun Dec 9 20:29:21 2018 +0900
+
+    Merge pull request #1 from Nobuya-Yanagisawa/user
+    
+    Add Users function
+
+[33mcommit 9336015caf91791f266f31b2614395df915e01fa[m[33m ([m[1;31morigin/user[m[33m, [m[1;32muser[m[33m)[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Sun Dec 9 11:06:15 2018 +0000
+
+    Modify top page
+
+[33mcommit b794d1f4cfbc7ee244ae68b3cd278b58e5453fed[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Sun Dec 9 05:44:03 2018 +0000
+
+    Add devise function
+
+[33mcommit af5be0ec64e8c07a55ef769d8455a75d283850b8[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 4 10:35:26 2018 +0000
+
+    Add Post model controller views
+
+[33mcommit ba406ba9b24d333d8835ce097ba5d78e17424b5e[m
+Author: Nobuya-Yanagisawa <yannob17@gmail.com>
+Date:   Tue Dec 4 09:31:00 2018 +0000
+
+    Initial commit

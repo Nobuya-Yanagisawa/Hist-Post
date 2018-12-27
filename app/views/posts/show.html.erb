@@ -15,15 +15,17 @@
 				</div>
 				<!-- 投稿いいね機能 -->
 				<% if user_signed_in? %>
-					<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
-						<%= link_to post_likes_path(@post.id), method: :delete do%>
-							<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> いいね！ <%= @post_likes_count %></i>
-	        	<% end %>
-	        <% else %>
-		        <%= link_to post_likes_path(@post.id), method: :post do %>
-							<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
-		        <% end %>
-					<% end %>
+					<% if @post.liked_by?(current_user) %>
+						<div id="like_box">
+							<%= link_to post_like_path(@post), class: "like", remote: true do%>
+								<i class="fas fa-thumbs-up btn btn-default" id="like_<%= @post.id %>"> いいね！ <strong id="likes_count"><%= @post_likes_count %></strong></i>
+							<% end %>
+		        <% else %>
+							<%= link_to post_like_path(@post), class: "like", remote: true do %>
+								<i class="far fa-thumbs-up btn btn-default" id="like_<%= @post.id %>"> いいね！ <strong id="likes_count"><%= @post_likes_count %></strong></i>
+							<% end %>
+						<% end %>
+					</div>
 				<% end %>
 				<!-- 投稿いいね機能 -->
 			</div>
@@ -53,12 +55,12 @@
 		<div class="col-md-12">
 			<h3>コメント</h3>
 			<% if user_signed_in? %>
-				<%= form_for([@post, @comment]) do |form| %>
+				<%= form_for([@post, @comment]) do |f| %>
 					<div style="display:block;">
-		      	<%= form.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
+		      	<%= f.text_area :comment_text, :placeholder => "新しいコメントを入力してください", class: "comment_form col-md-8" %>
 					</div>
 					<div>
-		      	<%= form.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
+		      	<%= f.submit "コメントを投稿する", class: "comment_submit col-md-2" %>
 					</div>
 		    <% end %>
 		  <% else %>
@@ -70,7 +72,7 @@
 			<% if @comments.any? %>
 	  		<% @comments.each do |comment| %>
 	  			<div class="comment_wrapper">
-		  			<%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "no_image_big.jpg", alt:"User image" %>
+		  			<%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "/images/no_image_big.jpg", alt:"User image" %>
 		  			<div class="comment_user_box">
 			  			<%= comment.user.user_name %>
 		  			</div>
@@ -86,7 +88,7 @@
 							<div>
 								<% if CommentLike.find_by(user_id: current_user.id, post_id: @post.id, comment_id: comment.id) %>
 									<%= link_to post_comment_comment_likes_path(@post, comment.id), method: :delete do %>
-										<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> <%= comment.comment_likes.count%></i>
+										<i class="fas fa-thumbs-up btn btn-default"> <%= comment.comment_likes.count %></i>
 				        	<% end %>
 				        <% else %>
 					        <%= link_to post_comment_comment_likes_path(@post, comment.id), method: :post do %>

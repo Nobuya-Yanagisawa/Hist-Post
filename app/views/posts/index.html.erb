@@ -1,2 +1,12 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8" >
+			<div>
+				<%= @category.category_name %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<%= render 'posts/sidebar' %>
+		</div>
+	</div>
+</div>

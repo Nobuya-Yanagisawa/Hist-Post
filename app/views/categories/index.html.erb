@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8" >
+			<div>
+				<h3>カテゴリー 一覧</h3>
+				<% @categories.each do |category| %>
+					<%= link_to category.category_name, category_path(category), class: "btn btn-default" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<%= render 'posts/sidebar' %>
+		</div>
+	</div>
+</div>

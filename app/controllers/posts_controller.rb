@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def home
     @posts = Post.page(params[:page]).reverse_order
+    @categories = Category.all
+  end
+
+  def select
   end
 
   def new
@@ -52,6 +56,21 @@ class PostsController < ApplicationController
 
   def edit_image_details
     @post = Post.find(params[:id])
+  end
+
+  def like
+    post = Post.find(params[:id])
+    @post_likes_count = Like.where(post_id: post.id).count
+
+    if post.liked_by?(current_user)
+      like = current_user.likes.find_by(post_id: post.id)
+      like.destroy
+      render json: post.id
+    else
+      like = current_user.likes.new(post_id: post.id)
+      like.save
+      render json: post.id
+    end
   end
 
   private

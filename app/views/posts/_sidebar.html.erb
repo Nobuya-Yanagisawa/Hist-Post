@@ -1,0 +1,21 @@
+<div class="sidebar_container">
+	<% if user_signed_in? %>
+		<%= link_to '新しく投稿する', posts_select_path, class: "btn_select" %>
+	<% else %>
+		<%= link_to 'ログインすると投稿ができます！', new_user_session_path, class: "btn_select" %>
+	<% end %>
+
+	<%= link_to '世界史', root_path, class: "btn btn-default search_btn" %>
+	<%= link_to '日本史', root_path, class: "btn btn-default search_btn" %>
+	<%= link_to '地域史', root_path, class: "btn btn-default search_btn" %>
+	<%= link_to '美術ギャラリー', root_path, class: "btn btn-default search_btn" %>
+
+	<%= link_to '辞典', categories_path, class: "btn btn_categories" %>
+	<% @categories.each do |category| %>
+		<%= link_to category.category_name, category_path(category.id), class: "btn btn-default search_btn" %>
+	<% end %>
+</div>
+
+<% if user_signed_in? && current_user.admin %>
+	<%= link_to 'カテゴリーを登録する', new_category_path, class: "btn_new_category btn_select" %>
+<% end %>

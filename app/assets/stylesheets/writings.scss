@@ -1,0 +1,14 @@
+// Place all the styles related to the writings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.writing_wrapper{
+  border: solid 1px #eeeeee;
+}
+
+.writing_box {
+	margin: 20px 0;
+}
+.writing_box:nth-child(1) {
+	margin: 0 0 20px 0;
+}

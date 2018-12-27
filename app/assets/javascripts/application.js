@@ -17,3 +17,14 @@
 	//= require turbolinks
   //= require cocoon
 	//= require_tree .
+
+$(function() {
+    $(document).on("ajax:success", ".like", function(e) {
+      if ($('#like_' + e.detail[0]).hasClass('fas')) {
+        $('#like_' + e.detail[0]).removeClass('fas').addClass('far');
+      } else {
+    		$('#like_' + e.detail[0]).removeClass('far').addClass('fas');
+      }
+      // $('#likes_count').html('<%= @post_likes_count %>');
+    });
+});
