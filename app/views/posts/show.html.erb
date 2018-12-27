@@ -72,7 +72,7 @@
 			<% if @comments.any? %>
 	  		<% @comments.each do |comment| %>
 	  			<div class="comment_wrapper">
-		  			<%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "no_image_big.jpg", alt:"User image" %>
+		  			<%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "/images/no_image_big.jpg", alt:"User image" %>
 		  			<div class="comment_user_box">
 			  			<%= comment.user.user_name %>
 		  			</div>
