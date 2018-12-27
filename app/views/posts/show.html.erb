@@ -15,15 +15,17 @@
 				</div>
 				<!-- 投稿いいね機能 -->
 				<% if user_signed_in? %>
-					<% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
-						<%= link_to post_likes_path(@post.id), remote: true, method: :delete do%>
-							<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> いいね！ <%= @post_likes_count %></i>
-	        	<% end %>
-	        <% else %>
-		        <%= link_to post_likes_path(@post.id), method: :post do %>
-							<i class="far fa-thumbs-up btn btn-default"> いいね！ <%= @post_likes_count %></i>
-		        <% end %>
-					<% end %>
+					<% if @post.liked_by?(current_user) %>
+						<div id="like_box">
+							<%= link_to post_like_path(@post), class: "like", remote: true do%>
+								<i class="fas fa-thumbs-up btn btn-default" id="like_<%= @post.id %>"> いいね！ <strong id="likes_count"><%= @post_likes_count %></strong></i>
+							<% end %>
+		        <% else %>
+							<%= link_to post_like_path(@post), class: "like", remote: true do %>
+								<i class="far fa-thumbs-up btn btn-default" id="like_<%= @post.id %>"> いいね！ <strong id="likes_count"><%= @post_likes_count %></strong></i>
+							<% end %>
+						<% end %>
+					</div>
 				<% end %>
 				<!-- 投稿いいね機能 -->
 			</div>
@@ -86,7 +88,7 @@
 							<div>
 								<% if CommentLike.find_by(user_id: current_user.id, post_id: @post.id, comment_id: comment.id) %>
 									<%= link_to post_comment_comment_likes_path(@post, comment.id), method: :delete do %>
-										<i class="far fa-thumbs-up btn btn-default" style="color: red; background: #f0f0f0;"> <%= comment.comment_likes.count%></i>
+										<i class="fas fa-thumbs-up btn btn-default"> <%= comment.comment_likes.count %></i>
 				        	<% end %>
 				        <% else %>
 					        <%= link_to post_comment_comment_likes_path(@post, comment.id), method: :post do %>

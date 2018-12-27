@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+
  	get 'posts/select', to: 'posts#select'
  	resources :posts do
  		resource :likes, only: [:create, :destroy]
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 	 		resource :comment_likes, only: [:create, :destroy]
  		end
  	end
+ 	get 'posts/like/:id' => 'posts#like', as: "post_like"
 
  	resources :categories
  	resources :words, only: [:new, :create, :show, :destroy] do
